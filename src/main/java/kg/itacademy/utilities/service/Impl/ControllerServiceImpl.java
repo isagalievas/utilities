@@ -8,18 +8,14 @@ import kg.itacademy.utilities.model.ReceiptModel;
 import kg.itacademy.utilities.repository.CategoryUtilitiesRepository;
 import kg.itacademy.utilities.repository.CompanyUtilitiesRepository;
 import kg.itacademy.utilities.repository.ReceiptRepository;
-import kg.itacademy.utilities.service.ReceiptService;
-import lombok.AllArgsConstructor;
+import kg.itacademy.utilities.service.ControllerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-
 @Service
-@AllArgsConstructor
-public class ReceiptServiceImpl implements ReceiptService {
-
+public class ControllerServiceImpl implements ControllerService {
     @Autowired
     private ReceiptRepository receiptRepository;
 
@@ -44,8 +40,10 @@ public class ReceiptServiceImpl implements ReceiptService {
     @Override
     public List<ReceiptModel> getAllReceipt() {
         List<Receipt> receiptEntityList = receiptRepository.findAll();
+
         return ReceiptMapper.INSTANCE.toReceiptModels(receiptEntityList);
     }
+
 
     @Override
     public boolean deleteReceipt(Long id) {

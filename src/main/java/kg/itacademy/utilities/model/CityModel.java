@@ -1,9 +1,8 @@
 package kg.itacademy.utilities.model;
 
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.time.LocalDate;
 
 @Data
 @Getter
@@ -12,10 +11,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class IndicationModel {
+
+public class CityModel {
     Long id;
-    String fullNameOfPayer;
-    String addressOfPayer;
-    LocalDate dateOfIndication;
-    Long indication;
+    String cityName;
 }

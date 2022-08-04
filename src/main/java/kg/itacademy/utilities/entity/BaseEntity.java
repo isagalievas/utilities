@@ -5,11 +5,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
+@MappedSuperclass
 @Getter
 @Setter
 public abstract class BaseEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 }

@@ -1,10 +1,9 @@
 package kg.itacademy.utilities.repository;
 
 import kg.itacademy.utilities.entity.Receipt;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
-public interface ReceiptRepository extends CrudRepository<Receipt, Long> {
-    List<Receipt> findAllByPersonalAccount(Long personalAccount);
+@Repository
+public interface ReceiptRepository extends JpaRepository<Receipt, Long> {
 }

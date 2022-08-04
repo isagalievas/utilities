@@ -14,17 +14,23 @@ import java.time.LocalDate;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ReceiptModel {
     Long id;
-    String nameOfReceipt;
+    Long categoryUtilitiesId; //выборка
+    //выписано
     LocalDate discharged;
+    //оплатить до
     LocalDate payUpTo;
-    String addressOfPayer;
-    String fullNameOfPayer;
-    Long personalAccount;
-    String city;
-    String nameOfCompany;
+    //лицевой счёт)
+    String personalAccountNumber;
+    //название компании
+    Long companyUtilitiesId;//выборка
+    //номер для связи
     String contactNumber;
+    //переплата
     Double overpayment;
+    //недоплата
     Double underpayment;
+    //пеня
     Double fine;
+    //к оплате
     Double toPay;
 }

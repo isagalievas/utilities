@@ -4,7 +4,7 @@ import kg.itacademy.utilities.model.ReceiptModel;
 
 import java.util.List;
 
-public interface ReceiptService {
+public interface ControllerService {
     ReceiptModel addReceipt(ReceiptModel receiptModel);
 
     List<ReceiptModel> getAllReceipt();

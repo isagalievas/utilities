@@ -1,7 +1,8 @@
 package kg.itacademy.utilities.controller;
 
-import kg.itacademy.utilities.model.ReceiptModel;
-import kg.itacademy.utilities.service.ReceiptService;
+import kg.itacademy.utilities.model.AddressModel;
+import kg.itacademy.utilities.model.RegionModel;
+import kg.itacademy.utilities.service.AddressService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,15 +15,15 @@ import java.util.List;
 @RestController
 @Slf4j
 @CrossOrigin(origins = "*", maxAge = 8600)
-@RequestMapping(path = "/api/receipt")
-public class ReceiptController {
+@RequestMapping(path = "/api/address")
+public class AddressController {
 
     @Autowired
-    ReceiptService receiptService;
+    AddressService addressService;
 
     @PostMapping(path = "/add")
-    public ResponseEntity<ReceiptModel> addNewReceipt(@RequestBody ReceiptModel receiptModel) {
-        ReceiptModel result = receiptService.addReceipt(receiptModel);
+    public ResponseEntity<AddressModel> addNewAddress(@RequestBody AddressModel addressModel) {
+        AddressModel result = addressService.addAddress(addressModel);
         if (result.getId() != null) {
             return ResponseEntity
                     .status(HttpStatus.CREATED)
@@ -34,12 +35,12 @@ public class ReceiptController {
         }
     }
 
-    @GetMapping(path = "/getAll")
-    public ResponseEntity<List<ReceiptModel>> getReceiptAll() {
+    @GetMapping(path = "/get/{id}")
+    public ResponseEntity<AddressModel> getAddressById(@PathVariable("id") Long id) {
         try {
-            return ResponseEntity.ok(receiptService.getAllReceipt());
-        } catch (RuntimeException e) {
-            log.error(e.getMessage(), e);
+            return ResponseEntity.ok(addressService.getById(id));
+        } catch (RuntimeException ex) {
+            log.error(ex.getMessage(), ex);
             return ResponseEntity
                     .status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body(null);
@@ -47,9 +48,9 @@ public class ReceiptController {
     }
 
     @DeleteMapping(path = "/delete")
-    public ResponseEntity<Boolean> deleteReceipt(@PathVariable("id") Long id) {
+    public ResponseEntity<Boolean> deleteAddress(@PathVariable("id") Long id) {
         try {
-            return ResponseEntity.ok(receiptService.deleteReceipt(id));
+            return ResponseEntity.ok(addressService.deleteAddress(id));
         } catch (RuntimeException e) {
             log.error(e.getMessage(), e);
             return ResponseEntity

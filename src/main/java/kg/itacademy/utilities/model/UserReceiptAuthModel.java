@@ -5,16 +5,17 @@ import lombok.experimental.FieldDefaults;
 
 import javax.validation.constraints.NotBlank;
 
+
 @Data
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserAuthModel {
-    @NotBlank(message = "Login can`t be blank")
-    String login;
+public class UserReceiptAuthModel {
+    @NotBlank
+    String personalAccountReceipt;
 
-    @NotBlank(message = "Password can`t be blank")
-    String password;
+    @NotBlank
+    String addressReceipt;
 }

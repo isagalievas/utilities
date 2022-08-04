@@ -16,7 +16,7 @@ public class RoleController {
     @PostMapping("/create")
     public String createRole(@RequestBody RoleModel roleModel) {
         Role role = new Role();
-        role.setNameRole(roleModel.getName());
+        role.setNameRole(roleModel.getNameRole());
         return roleRepository.save(role).getNameRole();
     }
 }

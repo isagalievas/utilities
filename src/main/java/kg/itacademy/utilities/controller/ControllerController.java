@@ -1,5 +1,6 @@
 package kg.itacademy.utilities.controller;
 
+
 import kg.itacademy.utilities.model.ReceiptModel;
 import kg.itacademy.utilities.service.ReceiptService;
 import lombok.extern.slf4j.Slf4j;
@@ -10,13 +11,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @Slf4j
 @CrossOrigin(origins = "*", maxAge = 8600)
-@RequestMapping(path = "/api/receipt")
-public class ReceiptController {
-
+@RequestMapping(path = "/api/controller")
+public class ControllerController {
     @Autowired
     ReceiptService receiptService;
 
