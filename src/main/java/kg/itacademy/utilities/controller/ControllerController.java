@@ -45,7 +45,7 @@ public class ControllerController {
         }
     }
 
-    @DeleteMapping(path = "/delete")
+    @DeleteMapping(path = "/delete/{id}")
     public ResponseEntity<Boolean> deleteReceipt(@PathVariable("id") Long id) {
         try {
             return ResponseEntity.ok(receiptService.deleteReceipt(id));

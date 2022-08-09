@@ -6,28 +6,27 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "")
+@Table(name = "controller")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Controller extends BaseEntity {
-    @Column(name = "login", nullable = false)
-    String login;
+    @Column(name = "firstname", nullable = false)
+    String firstname;
 
-    @Column(name = "password", nullable = false)
-    String password;
+    @Column(name = "lastname", nullable = false)
+    String lastname;
 
     @Email
-    @Column(name = "email", nullable = false)
-    String email;
+    @Column(name = "contact_number", nullable = false)
+    String contactNumber;
 
-    @Column(name = "is_active")
-    Boolean isActive;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    User user;
 
 }

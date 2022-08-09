@@ -1,11 +1,9 @@
 package kg.itacademy.utilities.entity;
 
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.FieldDefaults;
-import org.checkerframework.checker.index.qual.LowerBoundUnknown;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -16,10 +14,6 @@ import java.time.LocalDate;
 @Table(name = "receipts")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Receipt extends BaseEntity {
-    //наименование квитанции
-    @ManyToOne
-    @JoinColumn(name = "category_utilities_id", nullable = false)
-     CategoryUtilities categoryUtilities; //выборка
     //выписано
     @Column(name = "discharged", nullable = false)
     LocalDate discharged;
@@ -43,7 +37,7 @@ public class Receipt extends BaseEntity {
     @Column(name = "underpayment", nullable = false)
     Double underpayment;
     //пеня
-    @Column(name = "fine", nullable = true)
+    @Column(name = "fine", nullable = false)
     Double fine;
     @Column(name = "to_pay", nullable = false)
     //к оплате

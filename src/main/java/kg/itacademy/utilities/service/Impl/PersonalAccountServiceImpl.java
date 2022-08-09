@@ -1,7 +1,6 @@
 package kg.itacademy.utilities.service.Impl;
 
 import kg.itacademy.utilities.entity.*;
-import kg.itacademy.utilities.mapper.PersonalAccountMapper;
 import kg.itacademy.utilities.model.PersonalAccountModel;
 import kg.itacademy.utilities.repository.AddressRepository;
 import kg.itacademy.utilities.repository.CompanyUtilitiesRepository;
@@ -25,7 +24,8 @@ public class PersonalAccountServiceImpl implements PersonalAccountService {
 
     @Override
     public PersonalAccountModel addPersonalAccountNumber(PersonalAccountModel personalAccountModel) {
-        PersonalAccount personalAccountEntity = PersonalAccountMapper.INSTANCE.toEntity(personalAccountModel);
+        PersonalAccount personalAccountEntity = new PersonalAccount();
+        personalAccountEntity.setPersonalAccountNumber(personalAccountEntity.getPersonalAccountNumber());
         Address address = addressRepository.findById(personalAccountModel.getAddressId()).orElseThrow();
         personalAccountEntity.setAddress(address);
         CompanyUtilities companyUtilities = companyUtilitiesRepository.findById(personalAccountModel.getCompanyId()).orElseThrow();

@@ -38,14 +38,14 @@ public class DictionaryServiceImpl implements DictionaryService {
     public List<RegionModel> getAllRegion() {
         List<Region> regionList = regionRepository.findAll();
         return regionList.stream().map(region -> RegionModel.builder()
-                .regionName(region.getRegionName()).build()).collect(Collectors.toList());
+                .regionName(region.getName()).build()).collect(Collectors.toList());
     }
 
     @Override
     public List<CityModel> getAllCity() {
         List<City> cityList = cityRepository.findAll();
         return cityList.stream().map(city -> CityModel.builder()
-                .cityName(city.getCityName()).build()).collect(Collectors.toList());
+                .cityName(city.getName()).build()).collect(Collectors.toList());
     }
 
     @Override

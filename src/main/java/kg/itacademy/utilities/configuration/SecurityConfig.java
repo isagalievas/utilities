@@ -2,7 +2,6 @@ package kg.itacademy.utilities.configuration;
 
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -23,15 +22,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT t.address_receipt, t.personal_account_receipt FROM user_receipt t WHERE t.addressReceipt = ?")
+                .usersByUsernameQuery("SELECT t.login, t.password, t.is_active FROM users t WHERE t.login = ?")
                 .authoritiesByUsernameQuery(
-                        "SELECT u.address_receipt, r.name_role " +
+                        "SELECT u.login, r.name_role " +
                                 "FROM users_roles ur " +
-                                "INNER JOIN user_receipt u " +
+                                "INNER JOIN users u " +
                                 "   on ur.user_id = u.id " +
-                                "INNER JOIN utilities_roles r " +
+                                "INNER JOIN roles r " +
                                 "   on ur.role_id = r.id " +
-                                "WHERE u.address_receipt = ?"
+                                "WHERE u.login = ? AND u.is_active = true"
                 );
     }
 
@@ -44,19 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .cors().disable()
                 .authorizeRequests()
-
-                .antMatchers(HttpMethod.GET, "/api/dictionary/*").hasRole("USER")
-
-                .antMatchers(HttpMethod.POST, "/api//api/personal/account/*").hasRole("USER")
-
-                .antMatchers(HttpMethod.GET, "/api/receipt/get-all").hasAnyRole("USER", "CONTROLLER")
-                .antMatchers(HttpMethod.POST, "/api/receipt/add").hasRole("CONTROLLER")
-                .antMatchers(HttpMethod.DELETE, "/api/receipt/delete").hasRole("CONTROLLER")
-
-                .antMatchers("/api/address/*").hasRole("USER")
-
-                .antMatchers("/api/controller/*").hasRole("CONTROLLER")
-
+                .antMatchers("/api/controller/**").hasRole("CONTROLLER")
+                .antMatchers("/api/user/**").permitAll()
                 .and()
                 .httpBasic();
     }

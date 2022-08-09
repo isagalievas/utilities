@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PersonalAccount extends BaseEntity {
-    @Column(name = "personal_account", nullable = false)
+    @Column(name = "personal_account_number", nullable = false)
     String personalAccountNumber;
 
     @ManyToOne

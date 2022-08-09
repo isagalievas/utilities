@@ -12,8 +12,8 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name = "utilities_roles")
+@Table(name = "roles")
 public class Role extends BaseEntity {
     @Column(name = "name_role", nullable = false, unique = true)
-    private String nameRole;
+    private String name;
 }

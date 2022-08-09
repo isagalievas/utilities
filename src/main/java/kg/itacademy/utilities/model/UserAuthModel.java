@@ -11,11 +11,12 @@ import javax.validation.constraints.NotBlank;
 @Setter
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class UserReceiptAuthModel {
-    @NotBlank
-    String personalAccountReceipt;
+public class UserAuthModel {
+    @NotBlank(message = "Login can't be blank")
+    String login;
 
-    @NotBlank
-    String addressReceipt;
+    @NotBlank(message = "Password can't be blank")
+    String password;
 }

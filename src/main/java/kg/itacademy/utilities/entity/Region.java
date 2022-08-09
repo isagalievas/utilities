@@ -13,5 +13,5 @@ import javax.persistence.Table;
 @Setter
 public class Region extends BaseEntity {
     @Column(name = "region_name", nullable = false)
-    private String regionName;
+    private String name;
 }

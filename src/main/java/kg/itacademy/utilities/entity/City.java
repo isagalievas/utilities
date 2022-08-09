@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @Setter
 public class City extends BaseEntity {
     @Column(name = "city_name", nullable = false)
-    private String cityName;
+    private String name;
 
+    //регион id
 }

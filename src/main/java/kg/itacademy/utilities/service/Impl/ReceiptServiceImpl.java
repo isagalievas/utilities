@@ -1,6 +1,5 @@
 package kg.itacademy.utilities.service.Impl;
 
-import kg.itacademy.utilities.entity.CategoryUtilities;
 import kg.itacademy.utilities.entity.CompanyUtilities;
 import kg.itacademy.utilities.entity.Receipt;
 import kg.itacademy.utilities.mapper.ReceiptMapper;
@@ -13,6 +12,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -32,13 +32,16 @@ public class ReceiptServiceImpl implements ReceiptService {
     @Override
     public ReceiptModel addReceipt(ReceiptModel receiptModel) {
         Receipt receiptEntity = ReceiptMapper.INSTANCE.toEntity(receiptModel);
-        CategoryUtilities categoryUtilities = categoryUtilitiesRepository.findById(receiptModel.getCategoryUtilitiesId()).orElseThrow();
-        receiptEntity.setCategoryUtilities(categoryUtilities);
         CompanyUtilities companyUtilities = companyUtilitiesRepository.findById(receiptModel.getCompanyUtilitiesId()).orElseThrow();
         receiptEntity.setCompanyUtilities(companyUtilities);
         receiptEntity = receiptRepository.save(receiptEntity);
         receiptModel.setId(receiptEntity.getId());
         return receiptModel;
+    }
+
+    @Override
+    public List<ReceiptModel> getAllReceiptByPersonalNumberAndByDischarged(String personalAccountNumber, LocalDate discharged) {
+        return ReceiptMapper.INSTANCE.toReceiptModels(receiptRepository.findAllByPersonalAccountNumberAndByDischarged(personalAccountNumber,discharged));
     }
 
     @Override

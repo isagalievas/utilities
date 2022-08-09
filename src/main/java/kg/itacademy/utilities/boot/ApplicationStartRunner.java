@@ -13,15 +13,10 @@ public class ApplicationStartRunner implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         Role roleUser = new Role();
-        roleUser.setNameRole("ROLE_USER");
+        roleUser.setName("ROLE_USER");
         Role roleController = new Role();
-        roleController.setNameRole("ROLE_CONTROLLER");
+        roleController.setName("ROLE_CONTROLLER");
         roleRepository.save(roleUser);
         roleRepository.save(roleController);
-
-//        User user = User.builder()
-//                .fullName("hh").build();
-
-
     }
 }

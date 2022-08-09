@@ -4,16 +4,24 @@ package kg.itacademy.utilities.model;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-@Data
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PersonalAccountModel {
+
     Long id;
+
+    @NotBlank
     String personalAccountNumber;
+
+    @NotNull
     Long addressId;
+
+    @NotNull
     Long companyId;
 }

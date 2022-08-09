@@ -2,6 +2,8 @@ package kg.itacademy.utilities.model;
 
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
+
 @Data
 @Getter
 @Setter
@@ -9,5 +11,6 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RoleModel {
-    private String nameRole;
+    @NotBlank
+    private String name;
 }

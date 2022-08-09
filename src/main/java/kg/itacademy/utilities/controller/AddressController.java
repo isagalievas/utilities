@@ -1,15 +1,12 @@
 package kg.itacademy.utilities.controller;
 
 import kg.itacademy.utilities.model.AddressModel;
-import kg.itacademy.utilities.model.RegionModel;
 import kg.itacademy.utilities.service.AddressService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 
 @RestController

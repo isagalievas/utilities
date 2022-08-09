@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @Slf4j
 @CrossOrigin(origins = "*", maxAge = 8600)
@@ -19,7 +21,7 @@ public class PersonalAccountController {
     PersonalAccountService personalAccountService;
 
     @PostMapping(path = "/add")
-    public ResponseEntity<PersonalAccountModel> addNewPersonalAccount(@RequestBody PersonalAccountModel personalAccountModel) {
+    public ResponseEntity<PersonalAccountModel> addNewPersonalAccount(@Valid @RequestBody PersonalAccountModel personalAccountModel) {
         PersonalAccountModel result = personalAccountService.addPersonalAccountNumber(personalAccountModel);
         if (result.getId() != null) {
             return ResponseEntity

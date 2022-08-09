@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -20,24 +21,26 @@ public class ReceiptController {
     @Autowired
     ReceiptService receiptService;
 
-    @PostMapping(path = "/add")
-    public ResponseEntity<ReceiptModel> addNewReceipt(@RequestBody ReceiptModel receiptModel) {
-        ReceiptModel result = receiptService.addReceipt(receiptModel);
-        if (result.getId() != null) {
-            return ResponseEntity
-                    .status(HttpStatus.CREATED)
-                    .body(result);
-        } else {
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(null);
-        }
-    }
+//    @PostMapping(path = "/add")
+//    public ResponseEntity<ReceiptModel> addNewReceipt(@RequestBody ReceiptModel receiptModel) {
+//        ReceiptModel result = receiptService.addReceipt(receiptModel);
+//        if (result.getId() != null) {
+//            return ResponseEntity
+//                    .status(HttpStatus.CREATED)
+//                    .body(result);
+//        } else {
+//            return ResponseEntity
+//                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .body(null);
+//        }
+//    }
 
-    @GetMapping(path = "/getAll")
-    public ResponseEntity<List<ReceiptModel>> getReceiptAll() {
+    @GetMapping(path = "/getAllByPersonalNumberAndByDischarged")
+    //http... api/getAllByPersonalNumberAndByDischarged?personalAccountNumber=234234324&discharged=23.02.2022
+    public ResponseEntity<List<ReceiptModel>> getAllPersonalNumberAndByDischarged(@RequestParam("personalAccountNumber") String personalAccountNumber,
+                                                                                  @RequestParam("discharged") LocalDate discharged) {
         try {
-            return ResponseEntity.ok(receiptService.getAllReceipt());
+            return ResponseEntity.ok(receiptService.getAllReceiptByPersonalNumberAndByDischarged(personalAccountNumber, discharged));
         } catch (RuntimeException e) {
             log.error(e.getMessage(), e);
             return ResponseEntity
@@ -46,15 +49,15 @@ public class ReceiptController {
         }
     }
 
-    @DeleteMapping(path = "/delete")
-    public ResponseEntity<Boolean> deleteReceipt(@PathVariable("id") Long id) {
-        try {
-            return ResponseEntity.ok(receiptService.deleteReceipt(id));
-        } catch (RuntimeException e) {
-            log.error(e.getMessage(), e);
-            return ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(null);
-        }
-    }
+//    @DeleteMapping(path = "/delete")
+//    public ResponseEntity<Boolean> deleteReceipt(@PathVariable("id") Long id) {
+//        try {
+//            return ResponseEntity.ok(receiptService.deleteReceipt(id));
+//        } catch (RuntimeException e) {
+//            log.error(e.getMessage(), e);
+//            return ResponseEntity
+//                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+//                    .body(null);
+//        }
+//    }
 }

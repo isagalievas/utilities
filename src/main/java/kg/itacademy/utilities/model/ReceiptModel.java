@@ -14,7 +14,6 @@ import java.time.LocalDate;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ReceiptModel {
     Long id;
-    Long categoryUtilitiesId; //выборка
     //выписано
     LocalDate discharged;
     //оплатить до

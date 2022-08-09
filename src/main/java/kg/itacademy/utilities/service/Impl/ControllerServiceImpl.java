@@ -1,6 +1,5 @@
 package kg.itacademy.utilities.service.Impl;
 
-import kg.itacademy.utilities.entity.CategoryUtilities;
 import kg.itacademy.utilities.entity.CompanyUtilities;
 import kg.itacademy.utilities.entity.Receipt;
 import kg.itacademy.utilities.mapper.ReceiptMapper;
@@ -28,8 +27,6 @@ public class ControllerServiceImpl implements ControllerService {
     @Override
     public ReceiptModel addReceipt(ReceiptModel receiptModel) {
         Receipt receiptEntity = ReceiptMapper.INSTANCE.toEntity(receiptModel);
-        CategoryUtilities categoryUtilities = categoryUtilitiesRepository.findById(receiptModel.getCategoryUtilitiesId()).orElseThrow();
-        receiptEntity.setCategoryUtilities(categoryUtilities);
         CompanyUtilities companyUtilities = companyUtilitiesRepository.findById(receiptModel.getCompanyUtilitiesId()).orElseThrow();
         receiptEntity.setCompanyUtilities(companyUtilities);
         receiptEntity = receiptRepository.save(receiptEntity);

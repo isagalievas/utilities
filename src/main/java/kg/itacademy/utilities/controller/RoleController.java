@@ -6,6 +6,9 @@ import kg.itacademy.utilities.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
+
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*", maxAge = 8600)
@@ -14,9 +17,9 @@ public class RoleController {
     final RoleRepository roleRepository;
 
     @PostMapping("/create")
-    public String createRole(@RequestBody RoleModel roleModel) {
+    public String createRole(@Valid @RequestBody RoleModel roleModel) {
         Role role = new Role();
-        role.setNameRole(roleModel.getNameRole());
-        return roleRepository.save(role).getNameRole();
+        role.setName(roleModel.getName());
+        return roleRepository.save(role).getName();
     }
 }
