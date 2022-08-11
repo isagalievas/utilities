@@ -1,11 +1,11 @@
 package kg.itacademy.utilities.model;
 
-
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 
 @Data
 @Getter
@@ -15,13 +15,8 @@ import javax.validation.constraints.NotBlank;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ControllerModel {
-    @NotBlank
-    String login;
-
-    @NotBlank
-    String password;
-
-    @Email
-    @NotBlank
-    String email;
+    String firstname;
+    String lastname;
+    String contactNumber;
+    Long userId;
 }

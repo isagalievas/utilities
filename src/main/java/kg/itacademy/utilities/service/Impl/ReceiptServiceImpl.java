@@ -41,7 +41,7 @@ public class ReceiptServiceImpl implements ReceiptService {
 
     @Override
     public List<ReceiptModel> getAllReceiptByPersonalNumberAndByDischarged(String personalAccountNumber, LocalDate discharged) {
-        return ReceiptMapper.INSTANCE.toReceiptModels(receiptRepository.findAllByPersonalAccountNumberAndByDischarged(personalAccountNumber,discharged));
+        return ReceiptMapper.INSTANCE.toReceiptModels(receiptRepository.findAllByPersonalAccountNumberAndByDischarged(personalAccountNumber, discharged));
     }
 
     @Override

@@ -1,8 +1,6 @@
 package kg.itacademy.utilities.mapper;
 
-import kg.itacademy.utilities.entity.City;
 import kg.itacademy.utilities.entity.Region;
-import kg.itacademy.utilities.model.CityModel;
 import kg.itacademy.utilities.model.RegionModel;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;

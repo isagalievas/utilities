@@ -25,7 +25,7 @@ public class PersonalAccountServiceImpl implements PersonalAccountService {
     @Override
     public PersonalAccountModel addPersonalAccountNumber(PersonalAccountModel personalAccountModel) {
         PersonalAccount personalAccountEntity = new PersonalAccount();
-        personalAccountEntity.setPersonalAccountNumber(personalAccountEntity.getPersonalAccountNumber());
+        personalAccountEntity.setPersonalAccountNumber(personalAccountModel.getPersonalAccountNumber());
         Address address = addressRepository.findById(personalAccountModel.getAddressId()).orElseThrow();
         personalAccountEntity.setAddress(address);
         CompanyUtilities companyUtilities = companyUtilitiesRepository.findById(personalAccountModel.getCompanyId()).orElseThrow();

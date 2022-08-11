@@ -33,7 +33,7 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public AddressModel addAddress(AddressModel addressModel) {
         Address addressEntity = new Address();
-        addressEntity.setName(addressEntity.getName());
+        addressEntity.setName(addressModel.getName());
         City city = cityRepository.findById(addressModel.getCityId()).orElseThrow();
         addressEntity.setCity(city);
         Region region = regionRepository.findById(addressModel.getRegionId()).orElseThrow();

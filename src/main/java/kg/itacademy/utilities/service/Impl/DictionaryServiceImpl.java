@@ -43,7 +43,7 @@ public class DictionaryServiceImpl implements DictionaryService {
 
     @Override
     public CityModel getAllByRegionId(Long regionId) {
-         City city = cityRepository.findById(regionId).orElseThrow();
+        City city = cityRepository.findById(regionId).orElseThrow();
         return CityModel.builder()
                 .regionId(city.getRegion().getId())
                 .build();

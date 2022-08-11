@@ -1,6 +1,5 @@
 package kg.itacademy.utilities.model;
 
-
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -13,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class PersonalAccountModel {
-
+    @NotNull
     Long id;
 
     @NotBlank

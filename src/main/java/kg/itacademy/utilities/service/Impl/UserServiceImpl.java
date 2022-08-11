@@ -53,7 +53,6 @@ public class UserServiceImpl implements UserService {
     public String createUser(UserModel userModel) {
         User user = new User();
         user.setLogin(userModel.getLogin());
-        user.setEmail(userModel.getEmail());
         user.setPassword(passwordEncoder.encode(userModel.getPassword()));
         user.setIsActive(true);
 

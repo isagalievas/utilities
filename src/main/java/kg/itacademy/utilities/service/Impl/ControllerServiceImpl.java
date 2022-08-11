@@ -37,10 +37,8 @@ public class ControllerServiceImpl implements ControllerService {
     @Override
     public List<ReceiptModel> getAllReceipt() {
         List<Receipt> receiptEntityList = receiptRepository.findAll();
-
         return ReceiptMapper.INSTANCE.toReceiptModels(receiptEntityList);
     }
-
 
     @Override
     public boolean deleteReceipt(Long id) {

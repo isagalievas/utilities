@@ -46,7 +46,6 @@ public class DictionaryController {
         }
     }
 
-
     @GetMapping(path = "/company/getAllByCategoryId/{id}")
     public ResponseEntity<CompanyUtilitiesModel> getAllCompaniesByCategoryId(@PathVariable("id") Long categoryUtilitiesId) {
         try {

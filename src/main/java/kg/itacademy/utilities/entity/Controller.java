@@ -28,5 +28,4 @@ public class Controller extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "user_id")
     User user;
-
 }
