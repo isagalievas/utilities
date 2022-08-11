@@ -15,4 +15,5 @@ import lombok.experimental.FieldDefaults;
 public class CityModel {
     Long id;
     String cityName;
+    Long regionId;
 }

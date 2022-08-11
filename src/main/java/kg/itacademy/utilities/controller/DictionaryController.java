@@ -34,10 +34,10 @@ public class DictionaryController {
         }
     }
 
-    @GetMapping(path = "/city/getAll")
-    public ResponseEntity<List<CityModel>> getAllCities() {
+    @GetMapping(path = "/city/getAllByRegionId/{id}")
+    public ResponseEntity<CityModel> getAllCities(@PathVariable("id") Long regionId) {
         try {
-            return ResponseEntity.ok(dictionaryService.getAllCity());
+            return ResponseEntity.ok(dictionaryService.getAllByRegionId(regionId));
         } catch (RuntimeException e) {
             log.error(e.getMessage(), e);
             return ResponseEntity
@@ -47,8 +47,8 @@ public class DictionaryController {
     }
 
 
-    @GetMapping(path = "/company/getAllByCategoryId")
-    public ResponseEntity<CompanyUtilitiesModel> getAllCompaniesByCategoryId(@RequestParam("id") Long categoryUtilitiesId) {
+    @GetMapping(path = "/company/getAllByCategoryId/{id}")
+    public ResponseEntity<CompanyUtilitiesModel> getAllCompaniesByCategoryId(@PathVariable("id") Long categoryUtilitiesId) {
         try {
             return ResponseEntity.ok(dictionaryService.getAllByCategoryId(categoryUtilitiesId));
         } catch (RuntimeException e) {

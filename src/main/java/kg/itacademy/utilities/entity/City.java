@@ -3,9 +3,7 @@ package kg.itacademy.utilities.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "city")
@@ -15,5 +13,7 @@ public class City extends BaseEntity {
     @Column(name = "city_name", nullable = false)
     private String name;
 
-    //регион id
+    @ManyToOne
+    @JoinColumn(name = "region_id")
+    Region region;
 }

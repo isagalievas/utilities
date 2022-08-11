@@ -14,7 +14,7 @@ public interface ReceiptRepository extends JpaRepository<Receipt, Long> {
     @Query(nativeQuery = true, value = "SELECT\n" +
             "\tr.*\n" +
             "FROM\n" +
-            "\treceipt r\n" +
+            "\treceipts r\n" +
             "WHERE\n" +
             "\tr.personal_account_receipt = :personalAccountNumber\n" +
             "\tAND r.discharged = :discharged")

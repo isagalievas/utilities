@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Base64;
 
-
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -33,7 +32,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
-
 
     @Override
     public String getToken(UserAuthModel userAuthDto) {
@@ -60,11 +58,7 @@ public class UserServiceImpl implements UserService {
         user.setIsActive(true);
 
         UserRole userRole = new UserRole();
-        if (userModel.getLogin().contains("admin")) {
-            userRole.setRole(roleRepository.findFirstByName("ROLE_Admin"));
-        } else {
-            userRole.setRole(roleRepository.findFirstByName("ROLE_User"));
-        }
+        userRole.setRole(roleRepository.findFirstByName("ROLE_Controller"));
         userRole.setUser(userRepository.save(user));
         userRoleRepository.save(userRole);
         return "created";

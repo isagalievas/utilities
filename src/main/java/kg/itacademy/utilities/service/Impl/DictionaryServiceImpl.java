@@ -42,10 +42,11 @@ public class DictionaryServiceImpl implements DictionaryService {
     }
 
     @Override
-    public List<CityModel> getAllCity() {
-        List<City> cityList = cityRepository.findAll();
-        return cityList.stream().map(city -> CityModel.builder()
-                .cityName(city.getName()).build()).collect(Collectors.toList());
+    public CityModel getAllByRegionId(Long regionId) {
+         City city = cityRepository.findById(regionId).orElseThrow();
+        return CityModel.builder()
+                .regionId(city.getRegion().getId())
+                .build();
     }
 
     @Override

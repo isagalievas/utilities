@@ -32,7 +32,8 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public AddressModel addAddress(AddressModel addressModel) {
-        Address addressEntity = AddressMapper.INSTANCE.toEntity(addressModel);
+        Address addressEntity = new Address();
+        addressEntity.setName(addressEntity.getName());
         City city = cityRepository.findById(addressModel.getCityId()).orElseThrow();
         addressEntity.setCity(city);
         Region region = regionRepository.findById(addressModel.getRegionId()).orElseThrow();

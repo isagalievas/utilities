@@ -11,7 +11,7 @@ public interface DictionaryService {
 
     List<RegionModel> getAllRegion();
 
-    List<CityModel> getAllCity();
+    CityModel getAllByRegionId(Long regionId);
 
     CompanyUtilitiesModel getAllByCategoryId(Long categoryUtilitiesId);
 
